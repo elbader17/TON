@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
     <script>
         tailwind.config = {
@@ -97,6 +97,12 @@
         .string { color: #a5d6ff; } /* Light blue */
         .comment { color: #8b949e; } /* Gray */
         .type { color: #79c0ff; } /* Blue */
+
+        /* Lucide icons sizing */
+        [data-lucide] {
+            width: 1em;
+            height: 1em;
+        }
     </style>
 </head>
 <body class="antialiased font-sans selection:bg-ton-accent selection:text-ton-black">
@@ -111,19 +117,33 @@
                     </div>
                     <span class="font-bold text-xl tracking-widest text-white">TON</span>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#contexto" data-i18n="nav.context" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Contexto</a>
-                        <a href="#principios" data-i18n="nav.principles" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Principios AI-First</a>
-                        <a href="#arquitectura" data-i18n="nav.architecture" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Arquitectura</a>
-                        <a href="#codigo" data-i18n="nav.tools" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Herramientas</a>
-                    </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#contexto" data-i18n="nav.context" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Contexto</a>
+                    <a href="#principios" data-i18n="nav.principles" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Principios AI-First</a>
+                    <a href="#arquitectura" data-i18n="nav.architecture" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Arquitectura</a>
+                    <a href="#codigo" data-i18n="nav.tools" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Herramientas</a>
                 </div>
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-3">
                     <button onclick="toggleLanguage()" id="lang-btn" class="text-xs font-mono text-gray-400 hover:text-ton-accent transition border border-ton-surfaceBorder px-2 py-1 rounded">
                         EN
                     </button>
-                    <a href="https://github.com/elbader17/TON" target="_blank" class="text-sm font-mono bg-ton-surface border border-ton-surfaceBorder hover:border-ton-accent hover:bg-ton-accent/10 transition px-4 py-2 rounded text-white flex items-center gap-2">
+                    <a href="https://github.com/elbader17/TON" target="_blank" class="hidden sm:flex text-sm font-mono bg-ton-surface border border-ton-surfaceBorder hover:border-ton-accent hover:bg-ton-accent/10 transition px-4 py-2 rounded text-white items-center gap-2">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        <span class="hidden lg:inline">GitHub</span>
+                    </a>
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-gray-400 hover:text-white p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-ton-surfaceBorder mt-2">
+                <div class="flex flex-col space-y-3">
+                    <a href="#contexto" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Contexto</a>
+                    <a href="#principios" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Principios AI-First</a>
+                    <a href="#arquitectura" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Arquitectura</a>
+                    <a href="#codigo" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Herramientas</a>
+                    <a href="https://github.com/elbader17/TON" target="_blank" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium flex items-center gap-2">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg> GitHub
                     </a>
                 </div>
@@ -143,7 +163,7 @@
             <div data-i18n="hero.badge" class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-ton-accent/30 bg-ton-accent/10 text-ton-accent text-xs font-mono mb-6 uppercase tracking-wider">
                 Optimizado para MCP Singularity
             </div>
-            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 text-white">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-4 text-white">
                 <span class="block">TON</span>
             </h1>
             <h2 data-i18n="hero.subtitle" class="text-2xl md:text-3xl font-light text-gray-300 mb-8 tracking-wide">
@@ -167,7 +187,7 @@
     <section id="contexto" class="py-24 bg-ton-black relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 data-i18n="context.title" class="text-3xl md:text-4xl font-bold mb-4 text-white">El Motor de la <span class="text-ton-accent">Singularidad</span></h2>
+                <h2 data-i18n="context.title" class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white">El Motor de la <span class="text-ton-accent">Singularidad</span></h2>
                 <div class="w-24 h-1 bg-ton-accent mx-auto rounded"></div>
             </div>
             
@@ -213,7 +233,7 @@
     <section id="principios" class="py-24 bg-ton-dark border-y border-ton-surfaceBorder">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 data-i18n="principles.title" class="text-3xl md:text-4xl font-bold mb-4 text-white">Reglas Estrictas de Diseño</h2>
+                <h2 data-i18n="principles.title" class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white">Reglas Estrictas de Diseño</h2>
                 <p data-i18n="principles.subtitle" class="text-gray-400 font-mono text-sm uppercase tracking-widest">Paradigma AI-First</p>
             </div>
 
@@ -289,12 +309,12 @@
     <!-- Code & Architecture Section -->
     <section id="arquitectura" class="py-24 bg-ton-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-12">
-                
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
+
                 <!-- Directorios Inmutables -->
-                <div class="lg:col-span-4">
+                <div class="lg:col-span-4 md:col-span-1 col-span-1">
                     <h2 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
-                        <i data-lucide="folder-tree" class="text-ton-accent"></i> <span data-i18n="arch.title">Topología</span>
+                        <i data-lucide="folder-tree" class="text-ton-accent w-6 h-6"></i> <span data-i18n="arch.title">Topología</span>
                     </h2>
                     <p data-i18n="arch.desc" class="text-sm text-gray-400 mb-6">La estructura de directorios es inmutable. No se permite crear carpetas fuera de este estándar sin autorización de la arquitectura core.</p>
                     
@@ -347,9 +367,9 @@
                 </div>
 
                 <!-- Código de Ejemplo -->
-                <div id="codigo" class="lg:col-span-8">
+                <div id="codigo" class="lg:col-span-8 md:col-span-1 col-span-1 mt-8 lg:mt-0">
                     <h2 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
-                        <i data-lucide="code" class="text-ton-accent"></i> <span data-i18n="code.title">Implementación Estricta</span>
+                        <i data-lucide="code" class="text-ton-accent w-6 h-6"></i> <span data-i18n="code.title">Implementación Estricta</span>
                     </h2>
                     
                     <div class="rounded-xl overflow-hidden border border-ton-surfaceBorder bg-[#0d1117] shadow-2xl">
@@ -419,7 +439,7 @@
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-ton-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
 
         <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
-            <h2 data-i18n="init.title" class="text-3xl md:text-5xl font-extrabold mb-8 text-white">Inicializa el <span class="text-ton-accent">Taller</span></h2>
+            <h2 data-i18n="init.title" class="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-8 text-white">Inicializa el <span class="text-ton-accent">Taller</span></h2>
             <p data-i18n="init.desc" class="text-gray-400 mb-10 text-lg">Ejecuta el plan de acción primario para levantar la base de TON.</p>
             
             <div class="bg-black/50 border border-ton-surfaceBorder rounded-lg p-4 font-mono text-left max-w-2xl mx-auto flex items-center justify-between group">
@@ -566,6 +586,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             updateContent();
         });
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
 
         // Función para copiar código
         function copyCommand() {
