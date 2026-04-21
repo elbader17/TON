@@ -1,12 +1,704 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TON Framework</title>
+    <title>TON | Tool Orchestration Node - AI-First Go Framework</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        ton: {
+                            black: '#030305',
+                            dark: '#0a0a0f',
+                            accent: '#b829ff', // Violeta Neón (Cyberpunk/AI)
+                            accentHover: '#d066ff',
+                            surface: 'rgba(255, 255, 255, 0.03)',
+                            surfaceBorder: 'rgba(255, 255, 255, 0.08)',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #030305;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism utilities */
+        .glass {
+            background: rgba(10, 10, 15, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(184, 41, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(184, 41, 255, 0.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030305;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b829ff;
+        }
+
+        /* Canvas Background */
+        #blackhole-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Syntax Highlighting for code block */
+        .keyword { color: #ff7b72; } /* Pink/Red */
+        .function { color: #d2a8ff; } /* Purple */
+        .string { color: #a5d6ff; } /* Light blue */
+        .comment { color: #8b949e; } /* Gray */
+        .type { color: #79c0ff; } /* Blue */
+    </style>
 </head>
-<body>
-    <h1>TON (Tool Orchestration Node)</h1>
-    <p>AI-First Go Framework for tool orchestration</p>
+<body class="antialiased font-sans selection:bg-ton-accent selection:text-ton-black">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass border-b border-ton-surfaceBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-black border-2 border-ton-accent flex items-center justify-center shadow-[0_0_15px_rgba(184,41,255,0.5)]">
+                        <div class="w-2 h-2 bg-ton-accent rounded-full animate-pulse"></div>
+                    </div>
+                    <span class="font-bold text-xl tracking-widest text-white">TON</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#contexto" data-i18n="nav.context" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Contexto</a>
+                        <a href="#principios" data-i18n="nav.principles" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Principios AI-First</a>
+                        <a href="#arquitectura" data-i18n="nav.architecture" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Arquitectura</a>
+                        <a href="#codigo" data-i18n="nav.tools" class="text-gray-300 hover:text-white transition px-3 py-2 rounded-md text-sm font-medium">Herramientas</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleLanguage()" id="lang-btn" class="text-xs font-mono text-gray-400 hover:text-ton-accent transition border border-ton-surfaceBorder px-2 py-1 rounded">
+                        EN
+                    </button>
+                    <a href="https://github.com/tu-usuario/ton" target="_blank" class="text-sm font-mono bg-ton-surface border border-ton-surfaceBorder hover:border-ton-accent hover:bg-ton-accent/10 transition px-4 py-2 rounded text-white flex items-center gap-2">
+                        <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+        <!-- Canvas Background (Black Hole) -->
+        <canvas id="blackhole-canvas"></canvas>
+        
+        <!-- Dark overlay to ensure text readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-ton-black/60 to-ton-black z-0"></div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-10">
+            <div data-i18n="hero.badge" class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-ton-accent/30 bg-ton-accent/10 text-ton-accent text-xs font-mono mb-6 uppercase tracking-wider">
+                Optimizado para MCP Singularity
+            </div>
+            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 text-white">
+                <span class="block">TON</span>
+            </h1>
+            <h2 data-i18n="hero.subtitle" class="text-2xl md:text-3xl font-light text-gray-300 mb-8 tracking-wide">
+                Tool Orchestration Node.
+            </h2>
+            <p data-i18n="hero.desc" class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                El primer framework de Go diseñado exclusivamente bajo el paradigma <strong class="text-white">AI-First</strong>. No construido para la ergonomía humana, sino para la predecibilidad extrema de los LLMs.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#inicializar" data-i18n="hero.btn.start" class="px-8 py-3 rounded bg-ton-accent hover:bg-ton-accentHover text-white font-bold transition shadow-[0_0_20px_rgba(184,41,255,0.4)] hover:shadow-[0_0_30px_rgba(184,41,255,0.6)] flex items-center justify-center gap-2">
+                    Empezar (Init)
+                </a>
+                <a href="#principios" data-i18n="hero.btn.docs" class="px-8 py-3 rounded glass hover:bg-white/5 text-white font-medium transition flex items-center justify-center gap-2">
+                    Leer Docs
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Context Section -->
+    <section id="contexto" class="py-24 bg-ton-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 data-i18n="context.title" class="text-3xl md:text-4xl font-bold mb-4 text-white">El Motor de la <span class="text-ton-accent">Singularidad</span></h2>
+                <div class="w-24 h-1 bg-ton-accent mx-auto rounded"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p data-i18n="context.p1" class="text-gray-400 text-lg leading-relaxed mb-6">
+                        TON es el "Taller" de ejecución para <strong class="text-white">Singularity</strong>, un servidor MCP (Model Context Protocol) diseñado para gestionar agentes y sub-agentes de Inteligencia Artificial de forma masiva.
+                    </p>
+                    <p data-i18n="context.p2" class="text-gray-400 text-lg leading-relaxed">
+                        A diferencia de los frameworks web tradicionales (Gin, Fiber, Echo) que buscan simplificar la vida del desarrollador humano mediante "magia" e inyección dinámica, TON abraza el determinismo estricto. Cada herramienta, cada error y cada estructura está diseñada para que un LLM entienda el contexto de ejecución sin ambigüedades.
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-ton-accent to-fuchsia-600 rounded-lg blur opacity-25"></div>
+                    <div class="relative glass-card rounded-lg p-8 border border-ton-surfaceBorder">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3 bg-ton-accent/20 text-ton-accent rounded-lg">
+                                <i data-lucide="network" class="w-6 h-6"></i>
+                            </div>
+                            <h3 data-i18n="context.mcp.title" class="text-xl font-bold text-white">Singularity MCP</h3>
+                        </div>
+                        <ul class="space-y-4 font-mono text-sm text-gray-300">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="arrow-right" class="w-4 h-4 text-ton-accent"></i>
+                                <span data-i18n="context.mcp.li1">Orquestación de Sub-agentes</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="arrow-right" class="w-4 h-4 text-ton-accent"></i>
+                                <span data-i18n="context.mcp.li2">Exposición de Herramientas (Tools)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="arrow-right" class="w-4 h-4 text-ton-accent"></i>
+                                <span data-i18n="context.mcp.li3">Eficiencia máxima de Tokens</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principles Section -->
+    <section id="principios" class="py-24 bg-ton-dark border-y border-ton-surfaceBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 data-i18n="principles.title" class="text-3xl md:text-4xl font-bold mb-4 text-white">Reglas Estrictas de Diseño</h2>
+                <p data-i18n="principles.subtitle" class="text-gray-400 font-mono text-sm uppercase tracking-widest">Paradigma AI-First</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Regla 1 -->
+                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="zap-off" class="w-24 h-24 text-ton-accent"></i>
+                    </div>
+                    <h3 data-i18n="principles.r1.title" class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="text-ton-accent">01.</span> Cero Magia
+                    </h3>
+                    <p data-i18n="principles.r1.desc" class="text-gray-400 text-sm leading-relaxed">
+                        Prohibido el uso de <code class="text-ton-accent bg-ton-accent/10 px-1 rounded">reflect</code>. Todo es estático, explícito y comprobable en tiempo de compilación para garantizar la predicibilidad de la IA.
+                    </p>
+                </div>
+
+                <!-- Regla 2 -->
+                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="split" class="w-24 h-24 text-ton-accent"></i>
+                    </div>
+                    <h3 data-i18n="principles.r2.title" class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="text-ton-accent">02.</span> Segregación Extrema
+                    </h3>
+                    <p data-i18n="principles.r2.desc" class="text-gray-400 text-sm leading-relaxed">
+                        Interfaces con un solo método (ej. <code class="text-ton-accent bg-ton-accent/10 px-1 rounded">UserCreator</code>). Prohibidas las interfaces monolíticas. Contratos claros para agentes.
+                    </p>
+                </div>
+
+                <!-- Regla 3 -->
+                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="box" class="w-24 h-24 text-ton-accent"></i>
+                    </div>
+                    <h3 data-i18n="principles.r3.title" class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="text-ton-accent">03.</span> I/O Estructurado
+                    </h3>
+                    <p data-i18n="principles.r3.desc" class="text-gray-400 text-sm leading-relaxed">
+                        Comunicación entre capas mediante Structs de Request/Response. Adiós a los <code class="text-ton-accent bg-ton-accent/10 px-1 rounded">map[string]interface{}</code> genéricos.
+                    </p>
+                </div>
+
+                <!-- Regla 4 -->
+                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="alert-triangle" class="w-24 h-24 text-ton-accent"></i>
+                    </div>
+                    <h3 data-i18n="principles.r4.title" class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="text-ton-accent">04.</span> Errores Deterministas
+                    </h3>
+                    <p data-i18n="principles.r4.desc" class="text-gray-400 text-sm leading-relaxed">
+                        Errores tipados (ej. <code class="text-ton-accent bg-ton-accent/10 px-1 rounded">ErrNotFound</code>). Cada error devuelto provee contexto semántico útil para la telemetría del agente.
+                    </p>
+                </div>
+
+                <!-- Regla 5 -->
+                <div class="glass-card p-8 rounded-xl relative overflow-hidden group lg:col-span-2">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="wrench" class="w-32 h-32 text-ton-accent"></i>
+                    </div>
+                    <h3 data-i18n="principles.r5.title" class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="text-ton-accent">05.</span> Orientación a Tools
+                    </h3>
+                    <p data-i18n="principles.r5.desc" class="text-gray-400 text-sm leading-relaxed max-w-xl">
+                        Cada pieza de lógica de negocio en TON está encapsulada para exponerse como una "Tool" nativa consumible por el servidor MCP Singularity, minimizando el gasto de tokens al pasar el esquema de ejecución al LLM.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code & Architecture Section -->
+    <section id="arquitectura" class="py-24 bg-ton-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12">
+                
+                <!-- Directorios Inmutables -->
+                <div class="lg:col-span-4">
+                    <h2 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+                        <i data-lucide="folder-tree" class="text-ton-accent"></i> <span data-i18n="arch.title">Topología</span>
+                    </h2>
+                    <p data-i18n="arch.desc" class="text-sm text-gray-400 mb-6">La estructura de directorios es inmutable. No se permite crear carpetas fuera de este estándar sin autorización de la arquitectura core.</p>
+                    
+                    <div class="glass p-6 rounded-lg font-mono text-sm shadow-lg">
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="folder" class="w-4 h-4 text-gray-500 mt-0.5"></i>
+                                <div>
+                                    <span class="text-white">/cmd/ton</span>
+                                    <p data-i18n="arch.cmd" class="text-xs text-gray-500 mt-1">Punto de entrada principal.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="folder" class="w-4 h-4 text-gray-500 mt-0.5"></i>
+                                <div>
+                                    <span class="text-white">/internal/domain</span>
+                                    <p data-i18n="arch.domain" class="text-xs text-gray-500 mt-1">Entidades core y contratos.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="folder" class="w-4 h-4 text-ton-accent mt-0.5"></i>
+                                <div>
+                                    <span class="text-white">/internal/tools</span>
+                                    <p data-i18n="arch.tools" class="text-xs text-ton-accent/70 mt-1">El corazón de TON. Casos de uso como herramientas.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="folder" class="w-4 h-4 text-gray-500 mt-0.5"></i>
+                                <div>
+                                    <span class="text-white">/internal/orchestrator</span>
+                                    <p data-i18n="arch.orch" class="text-xs text-gray-500 mt-1">Enrutamiento hacia /tools.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="folder" class="w-4 h-4 text-gray-500 mt-0.5"></i>
+                                <div>
+                                    <span class="text-white">/pkg/errors</span>
+                                    <p data-i18n="arch.errors" class="text-xs text-gray-500 mt-1">Errores deterministas.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="folder" class="w-4 h-4 text-gray-500 mt-0.5"></i>
+                                <div>
+                                    <span class="text-white">/pkg/telemetry</span>
+                                    <p data-i18n="arch.telemetry" class="text-xs text-gray-500 mt-1">Trazabilidad para la IA.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Código de Ejemplo -->
+                <div id="codigo" class="lg:col-span-8">
+                    <h2 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+                        <i data-lucide="code" class="text-ton-accent"></i> <span data-i18n="code.title">Implementación Estricta</span>
+                    </h2>
+                    
+                    <div class="rounded-xl overflow-hidden border border-ton-surfaceBorder bg-[#0d1117] shadow-2xl">
+                        <!-- Terminal Header -->
+                        <div class="bg-[#161b22] px-4 py-3 flex items-center gap-2 border-b border-ton-surfaceBorder">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                            </div>
+                            <span class="ml-4 font-mono text-xs text-gray-400">ton/internal/tools/ping.go</span>
+                        </div>
+                        <!-- Code Content -->
+                        <pre class="p-6 overflow-x-auto text-sm font-mono leading-relaxed"><code class="language-go"><span class="keyword">package</span> tools
+
+<span class="keyword">import</span> (
+    <span class="string">"context"</span>
+    <span class="string">"github.com/tu-usuario/ton/internal/domain"</span>
+    <span class="string">"github.com/tu-usuario/ton/pkg/errors"</span>
+)
+
+<span class="comment">// PingRequest define los parámetros de entrada estrictos para la herramienta.</span>
+<span class="keyword">type</span> <span class="type">PingRequest</span> <span class="keyword">struct</span> {
+    AgentID <span class="type">string</span> <span class="string">`json:"agent_id"`</span>
+    Message <span class="type">string</span> <span class="string">`json:"message"`</span>
+}
+
+<span class="comment">// PingResponse define la salida estructurada esperada por el LLM.</span>
+<span class="keyword">type</span> <span class="type">PingResponse</span> <span class="keyword">struct</span> {
+    Status    <span class="type">string</span> <span class="string">`json:"status"`</span>
+    Timestamp <span class="type">int64</span>  <span class="string">`json:"timestamp"`</span>
+}
+
+<span class="comment">// PingExecutor es el contrato de un solo método (Segregación Extrema).</span>
+<span class="keyword">type</span> <span class="type">PingExecutor</span> <span class="keyword">interface</span> {
+    <span class="function">Execute</span>(ctx <span class="type">context.Context</span>, req <span class="type">PingRequest</span>) (<span class="type">PingResponse</span>, <span class="type">error</span>)
+}
+
+<span class="keyword">type</span> <span class="type">pingTool</span> <span class="keyword">struct</span> {
+    <span class="comment">// Inyección de dependencias estática sin reflexiones</span>
+}
+
+<span class="keyword">func</span> <span class="function">NewPingTool</span>() <span class="type">PingExecutor</span> {
+    <span class="keyword">return</span> &pingTool{}
+}
+
+<span class="keyword">func</span> (t *pingTool) <span class="function">Execute</span>(ctx <span class="type">context.Context</span>, req <span class="type">PingRequest</span>) (<span class="type">PingResponse</span>, <span class="type">error</span>) {
+    <span class="keyword">if</span> req.AgentID == <span class="string">""</span> {
+        <span class="comment">// Error determinista con contexto para la IA</span>
+        <span class="keyword">return</span> <span class="type">PingResponse</span>{}, errors.<span class="function">NewErrValidation</span>(<span class="string">"agent_id es requerido para el ping"</span>)
+    }
+
+    <span class="keyword">return</span> <span class="type">PingResponse</span>{
+        Status:    <span class="string">"ACK"</span>,
+        Timestamp: domain.<span class="function">Now</span>().<span class="function">Unix</span>(),
+    }, <span class="keyword">nil</span>
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Plan Section -->
+    <section id="inicializar" class="py-24 bg-ton-dark border-t border-ton-surfaceBorder relative overflow-hidden">
+        <!-- Glow effect -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-ton-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 data-i18n="init.title" class="text-3xl md:text-5xl font-extrabold mb-8 text-white">Inicializa el <span class="text-ton-accent">Taller</span></h2>
+            <p data-i18n="init.desc" class="text-gray-400 mb-10 text-lg">Ejecuta el plan de acción primario para levantar la base de TON.</p>
+            
+            <div class="bg-black/50 border border-ton-surfaceBorder rounded-lg p-4 font-mono text-left max-w-2xl mx-auto flex items-center justify-between group">
+                <code class="text-ton-accent text-sm md:text-base select-all">
+                    $ go mod init github.com/tu-usuario/ton
+                </code>
+                <button onclick="copyCommand()" class="text-gray-500 hover:text-white transition focus:outline-none" title="Copiar comando">
+                    <i data-lucide="copy" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <div id="copy-toast" data-i18n="init.toast" class="mt-4 text-green-400 font-mono text-sm opacity-0 transition-opacity">
+                ¡Comando copiado al portapapeles!
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-ton-surfaceBorder text-center text-sm font-mono text-gray-500">
+        <div class="flex justify-center items-center gap-2 mb-4">
+            <div class="w-2 h-2 rounded-full bg-ton-accent shadow-[0_0_10px_rgba(184,41,255,1)]"></div>
+            <span>TON Framework &copy; 2026. AI-First Go Framework.</span>
+        </div>
+        <p data-i18n="footer.text">Creado para la Singularidad.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // i18n Translations
+        const translations = {
+            es: {
+                "nav.context": "Contexto",
+                "nav.principles": "Principios AI-First",
+                "nav.architecture": "Arquitectura",
+                "nav.tools": "Herramientas",
+                "hero.badge": '<i data-lucide="cpu" class="w-3 h-3 inline"></i> Optimizado para MCP Singularity',
+                "hero.subtitle": "Tool Orchestration Node.",
+                "hero.desc": 'El primer framework de Go diseñado exclusivamente bajo el paradigma <strong class="text-white">AI-First</strong>. No construido para la ergonomía humana, sino para la predecibilidad extrema de los LLMs.',
+                "hero.btn.start": '<i data-lucide="terminal" class="w-5 h-5"></i> Empezar (Init)',
+                "hero.btn.docs": '<i data-lucide="book-open" class="w-5 h-5"></i> Leer Docs',
+                "context.title": 'El Motor de la <span class="text-ton-accent">Singularidad</span>',
+                "context.p1": 'TON es el "Taller" de ejecución para <strong class="text-white">Singularity</strong>, un servidor MCP (Model Context Protocol) diseñado para gestionar agentes y sub-agentes de Inteligencia Artificial de forma masiva.',
+                "context.p2": 'A diferencia de los frameworks web tradicionales (Gin, Fiber, Echo) que buscan simplificar la vida del desarrollador humano mediante "magia" e inyección dinámica, TON abraza el determinismo estricto. Cada herramienta, cada error y cada estructura está diseñada para que un LLM entienda el contexto de ejecución sin ambigüedades.',
+                "context.mcp.title": "Singularity MCP",
+                "context.mcp.li1": "Orquestación de Sub-agentes",
+                "context.mcp.li2": "Exposición de Herramientas (Tools)",
+                "context.mcp.li3": "Eficiencia máxima de Tokens",
+                "principles.title": "Reglas Estrictas de Diseño",
+                "principles.subtitle": "Paradigma AI-First",
+                "principles.r1.title": '<span class="text-ton-accent">01.</span> Cero Magia',
+                "principles.r1.desc": 'Prohibido el uso de <code class="text-ton-accent bg-ton-accent/10 px-1 rounded">reflect</code>. Todo es estático, explícito y comprobable en tiempo de compilación para garantizar la predicibilidad de la IA.',
+                "principles.r2.title": '<span class="text-ton-accent">02.</span> Segregación Extrema',
+                "principles.r2.desc": 'Interfaces con un solo método (ej. <code class="text-ton-accent bg-ton-accent/10 px-1 rounded">UserCreator</code>). Prohibidas las interfaces monolíticas. Contratos claros para agentes.',
+                "principles.r3.title": '<span class="text-ton-accent">03.</span> I/O Estructurado',
+                "principles.r3.desc": 'Comunicación entre capas mediante Structs de Request/Response. Adiós a los <code class="text-ton-accent bg-ton-accent/10 px-1 rounded">map[string]interface{}</code> genéricos.',
+                "principles.r4.title": '<span class="text-ton-accent">04.</span> Errores Deterministas',
+                "principles.r4.desc": 'Errores tipados (ej. <code class="text-ton-accent bg-ton-accent/10 px-1 rounded">ErrNotFound</code>). Cada error devuelto provee contexto semántico útil para la telemetría del agente.',
+                "principles.r5.title": '<span class="text-ton-accent">05.</span> Orientación a Tools',
+                "principles.r5.desc": 'Cada pieza de lógica de negocio en TON está encapsulada para exponerse como una "Tool" nativa consumible por el servidor MCP Singularity, minimizando el gasto de tokens al pasar el esquema de ejecución al LLM.',
+                "arch.title": "Topología",
+                "arch.desc": "La estructura de directorios es inmutable. No se permite crear carpetas fuera de este estándar sin autorización de la arquitectura core.",
+                "arch.cmd": "Punto de entrada principal.",
+                "arch.domain": "Entidades core y contratos.",
+                "arch.tools": "El corazón de TON. Casos de uso como herramientas.",
+                "arch.orch": "Enrutamiento hacia /tools.",
+                "arch.errors": "Errores deterministas.",
+                "arch.telemetry": "Trazabilidad para la IA.",
+                "code.title": "Implementación Estricta",
+                "init.title": 'Inicializa el <span class="text-ton-accent">Taller</span>',
+                "init.desc": "Ejecuta el plan de acción primario para levantar la base de TON.",
+                "init.toast": "¡Comando copiado al portapapeles!",
+                "footer.text": "Creado para la Singularidad."
+            },
+            en: {
+                "nav.context": "Context",
+                "nav.principles": "AI-First Principles",
+                "nav.architecture": "Architecture",
+                "nav.tools": "Tools",
+                "hero.badge": '<i data-lucide="cpu" class="w-3 h-3 inline"></i> Optimized for MCP Singularity',
+                "hero.subtitle": "Tool Orchestration Node.",
+                "hero.desc": 'The first Go framework designed exclusively under the <strong class="text-white">AI-First</strong> paradigm. Built not for human ergonomics, but for the extreme predictability of LLMs.',
+                "hero.btn.start": '<i data-lucide="terminal" class="w-5 h-5"></i> Get Started (Init)',
+                "hero.btn.docs": '<i data-lucide="book-open" class="w-5 h-5"></i> Read Docs',
+                "context.title": 'The Engine of the <span class="text-ton-accent">Singularity</span>',
+                "context.p1": 'TON is the execution "Workshop" for <strong class="text-white">Singularity</strong>, an MCP (Model Context Protocol) server designed to massively manage Artificial Intelligence agents and sub-agents.',
+                "context.p2": 'Unlike traditional web frameworks (Gin, Fiber, Echo) that seek to simplify the human developer\'s life through "magic" and dynamic injection, TON embraces strict determinism. Every tool, every error, and every structure is designed so an LLM understands the execution context without ambiguity.',
+                "context.mcp.title": "Singularity MCP",
+                "context.mcp.li1": "Sub-agent Orchestration",
+                "context.mcp.li2": "Tools Exposure",
+                "context.mcp.li3": "Maximum Token Efficiency",
+                "principles.title": "Strict Design Rules",
+                "principles.subtitle": "AI-First Paradigm",
+                "principles.r1.title": '<span class="text-ton-accent">01.</span> Zero Magic',
+                "principles.r1.desc": 'Use of <code class="text-ton-accent bg-ton-accent/10 px-1 rounded">reflect</code> is forbidden. Everything is static, explicit, and compile-time verifiable to guarantee AI predictability.',
+                "principles.r2.title": '<span class="text-ton-accent">02.</span> Extreme Segregation',
+                "principles.r2.desc": 'Interfaces with a single method (e.g. <code class="text-ton-accent bg-ton-accent/10 px-1 rounded">UserCreator</code>). Monolithic interfaces are prohibited. Clear contracts for agents.',
+                "principles.r3.title": '<span class="text-ton-accent">03.</span> Structured I/O',
+                "principles.r3.desc": 'Communication between layers via Request/Response Structs. Goodbye to generic <code class="text-ton-accent bg-ton-accent/10 px-1 rounded">map[string]interface{}</code>.',
+                "principles.r4.title": '<span class="text-ton-accent">04.</span> Deterministic Errors',
+                "principles.r4.desc": 'Typed errors (e.g. <code class="text-ton-accent bg-ton-accent/10 px-1 rounded">ErrNotFound</code>). Every returned error provides useful semantic context for agent telemetry.',
+                "principles.r5.title": '<span class="text-ton-accent">05.</span> Tool Oriented',
+                "principles.r5.desc": 'Every piece of business logic in TON is encapsulated to be exposed as a native "Tool" consumable by the Singularity MCP server, minimizing token expenditure.',
+                "arch.title": "Topology",
+                "arch.desc": "The directory structure is immutable. Creating folders outside this standard is not allowed without core architecture authorization.",
+                "arch.cmd": "Main application entry point.",
+                "arch.domain": "Core entities and contracts.",
+                "arch.tools": "The heart of TON. Use cases exposed as tools.",
+                "arch.orch": "Routing logic towards /tools.",
+                "arch.errors": "Deterministic errors.",
+                "arch.telemetry": "Traceability for the AI.",
+                "code.title": "Strict Implementation",
+                "init.title": 'Initialize the <span class="text-ton-accent">Workshop</span>',
+                "init.desc": "Execute the primary action plan to bootstrap the TON base.",
+                "init.toast": "Command copied to clipboard!",
+                "footer.text": "Created for the Singularity."
+            }
+        };
+
+        let currentLang = 'es';
+
+        function updateContent() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    element.innerHTML = translations[currentLang][key];
+                }
+            });
+            // Re-renderizar iconos en caso de que innerHTML los haya sobrescrito
+            lucide.createIcons();
+            
+            // Actualizar texto del botón de idioma
+            const langBtn = document.getElementById('lang-btn');
+            langBtn.innerText = currentLang === 'es' ? 'EN' : 'ES';
+            langBtn.setAttribute('title', currentLang === 'es' ? 'Switch to English' : 'Cambiar a Español');
+            document.documentElement.lang = currentLang;
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            updateContent();
+        }
+
+        // Inicializar iconos y contenido
+        document.addEventListener('DOMContentLoaded', () => {
+            updateContent();
+        });
+
+        // Función para copiar código
+        function copyCommand() {
+            const command = "go mod init github.com/tu-usuario/ton";
+            navigator.clipboard.writeText(command).then(() => {
+                const toast = document.getElementById('copy-toast');
+                toast.classList.remove('opacity-0');
+                setTimeout(() => {
+                    toast.classList.add('opacity-0');
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+                const tempInput = document.createElement("input");
+                tempInput.value = command;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+                const toast = document.getElementById('copy-toast');
+                toast.classList.remove('opacity-0');
+                setTimeout(() => {
+                    toast.classList.add('opacity-0');
+                }, 2000);
+            });
+        }
+
+        // Animación del Fondo
+        const canvas = document.getElementById('blackhole-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height, cx, cy;
+        let particles = [];
+        const numParticles = window.innerWidth > 768 ? 600 : 300; 
+        
+        // Colores del disco de acreción (Violeta Neón)
+        const colors = [
+            'rgba(184, 41, 255, 0.8)',   // Violeta Intenso
+            'rgba(150, 0, 255, 0.6)',    // Violeta Medio
+            'rgba(100, 0, 200, 0.7)',    // Púrpura Oscuro
+            'rgba(230, 150, 255, 0.5)'   // Blanco violáceo
+        ];
+
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            cx = width / 2;
+            cy = height / 2;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.radius = Math.random() * (width > 800 ? 500 : 300) + 100;
+                this.angle = Math.random() * Math.PI * 2;
+                this.speed = (Math.random() * 0.005) + (50 / this.radius) * 0.001;
+                this.spiralSpeed = Math.random() * 0.5 + 0.1;
+                this.size = Math.random() * 2 + 0.5;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.tilt = 0.5; 
+            }
+
+            update() {
+                this.angle += this.speed;
+                this.radius -= this.spiralSpeed;
+
+                if (this.radius < 80) {
+                    this.init();
+                    this.radius = Math.random() * 200 + (width > 800 ? 400 : 200);
+                }
+
+                this.x = cx + Math.cos(this.angle) * this.radius;
+                this.y = cy + Math.sin(this.angle) * this.radius * this.tilt;
+
+                if (this.radius < 90) {
+                    this.alpha = (this.radius - 80) / 10;
+                } else {
+                    this.alpha = 1 - (this.radius / (width > 800 ? 600 : 400));
+                }
+                
+                if (this.alpha < 0) this.alpha = 0;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                
+                const colorParts = this.color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+                if (colorParts) {
+                    ctx.fillStyle = `rgba(${colorParts[1]}, ${colorParts[2]}, ${colorParts[3]}, ${this.alpha})`;
+                } else {
+                    ctx.fillStyle = this.color;
+                }
+                
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numParticles; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(3, 3, 5, 0.2)';
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.beginPath();
+            ctx.ellipse(cx, cy, 75, 75 * 0.5, 0, 0, Math.PI * 2); 
+            ctx.fillStyle = '#000000';
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.ellipse(cx, cy, 80, 80 * 0.5, 0, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(184, 41, 255, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
 </body>
 </html>
