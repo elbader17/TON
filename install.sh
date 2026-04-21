@@ -1,32 +1,30 @@
 #!/bin/bash
 set -e
 
-echo "🚀 TON Framework - Descargando..."
+echo "🚀 TON Framework - Instalando..."
 
 REPO_URL="${1:-https://github.com/elbader17/TON}"
-PROJECT_NAME="ton-framework"
-TEMP_DIR=$(mktemp -d)
+INSTALL_DIR="${2:-$(pwd)}"
 
-cd "$TEMP_DIR"
+cd "$INSTALL_DIR"
 
-echo "📥 Clonando repositorio..."
-git clone --depth 1 "$REPO_URL" "$PROJECT_NAME" 2>/dev/null || {
-    echo "❌ Error: No se pudo clonar el repositorio"
-    echo "   Asegúrate de que el repositorio existe y tienes acceso"
-    exit 1
-}
-
-cd "$PROJECT_NAME"
+if [ ! -d ".git" ]; then
+    echo "📥 Clonando repositorio..."
+    git clone --depth 1 "$REPO_URL" . 2>/dev/null || {
+        echo "❌ Error: No se pudo clonar el repositorio"
+        echo "   Asegúrate de que el repositorio existe y tienes acceso"
+        exit 1
+    }
+fi
 
 echo "📦 Instalando dependencias..."
 go mod tidy 2>/dev/null || go mod init github.com/ton/framework && go mod tidy
 
 echo ""
-echo "✅ ¡Listo! El proyecto está en: $(pwd)"
+echo "✅ ¡Listo!"
 echo ""
 echo "📌 Para levantar el servidor:"
-echo "   cd $(pwd)"
 echo "   go run ./cmd/ton"
 echo ""
-echo "🌐 El servidor estará disponible en: http://localhost:8080"
+echo "🌐 Servidor disponible en: http://localhost:8080"
 echo "   Endpoint: POST /tools"
