@@ -123,7 +123,7 @@
                     <button onclick="toggleLanguage()" id="lang-btn" class="text-xs font-mono text-gray-400 hover:text-ton-accent transition border border-ton-surfaceBorder px-2 py-1 rounded">
                         EN
                     </button>
-                    <a href="https://github.com/tu-usuario/ton" target="_blank" class="text-sm font-mono bg-ton-surface border border-ton-surfaceBorder hover:border-ton-accent hover:bg-ton-accent/10 transition px-4 py-2 rounded text-white flex items-center gap-2">
+                    <a href="https://github.com/elbader17/TON" target="_blank" class="text-sm font-mono bg-ton-surface border border-ton-surfaceBorder hover:border-ton-accent hover:bg-ton-accent/10 transition px-4 py-2 rounded text-white flex items-center gap-2">
                         <i data-lucide="github" class="w-4 h-4"></i> GitHub
                     </a>
                 </div>
@@ -367,8 +367,8 @@
 
 <span class="keyword">import</span> (
     <span class="string">"context"</span>
-    <span class="string">"github.com/tu-usuario/ton/internal/domain"</span>
-    <span class="string">"github.com/tu-usuario/ton/pkg/errors"</span>
+    <span class="string">"https://github.com/elbader17/TON/internal/domain"</span>
+    <span class="string">"https://github.com/elbader17/TON/pkg/errors"</span>
 )
 
 <span class="comment">// PingRequest define los parámetros de entrada estrictos para la herramienta.</span>
@@ -424,7 +424,7 @@
             
             <div class="bg-black/50 border border-ton-surfaceBorder rounded-lg p-4 font-mono text-left max-w-2xl mx-auto flex items-center justify-between group">
                 <code class="text-ton-accent text-sm md:text-base select-all">
-                    $ go mod init github.com/tu-usuario/ton
+                    $ go mod init https://github.com/elbader17/TON
                 </code>
                 <button onclick="copyCommand()" class="text-gray-500 hover:text-white transition focus:outline-none" title="Copiar comando">
                     <i data-lucide="copy" class="w-5 h-5"></i>
@@ -569,7 +569,7 @@
 
         // Función para copiar código
         function copyCommand() {
-            const command = "go mod init github.com/tu-usuario/ton";
+            const command = "go mod init https://github.com/elbader17/TON";
             navigator.clipboard.writeText(command).then(() => {
                 const toast = document.getElementById('copy-toast');
                 toast.classList.remove('opacity-0');
