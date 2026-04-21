@@ -1,5 +1,25 @@
 # TON Framework - Guía para Agentes IA
 
+## Instalación
+
+Clona el repositorio y ejecuta el script de instalación:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/elbader17/TON/main/install.sh | bash
+```
+
+Esto descargará el proyecto, instalará las dependencias con `go mod tidy` y te indicará cómo levantar el servidor.
+
+### Levantar el servidor
+
+```bash
+go run ./cmd/ton
+```
+
+El servidor estará disponible en `http://localhost:8080` con el endpoint `POST /tools`.
+
+---
+
 ## Propósito
 TON (Tool Orchestration Node) es un framework AI-First en Go diseñado como motor de ejecución para Singularity (servidor MCP).
 
