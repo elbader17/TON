@@ -187,7 +187,7 @@ go run ./cmd/ton        # Levantar servidor en :8080
 
 ```
 ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
-│  Singularity │────▶│ Orchestrator │────▶│   Tool      │
+│ Singularity │───▶│ Orchestrator │───▶│   Tool      │
 │  (MCP)      │     │ (Router)     │     │ (Executor)  │
 └─────────────┘     └──────────────┘     └─────────────┘
                                                │
