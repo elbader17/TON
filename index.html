@@ -178,7 +178,7 @@
                     </div>
                     <div class="flex flex-col">
                         <span class="font-bold text-xl tracking-widest text-white font-mono leading-none">TON</span>
-                        <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-gray-400 mt-1">Orchestration Node</span>
+                        <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-gray-400 mt-1" data-i18n="nav.logo_sub">Orchestration Node</span>
                     </div>
                 </div>
                 
@@ -227,8 +227,9 @@
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8">
             <!-- Pulsing Badge -->
-            <div data-i18n="hero.badge" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-ton-accent/30 bg-ton-accent/10 text-ton-accent text-xs font-mono mb-8 uppercase tracking-[0.15em] animate-float">
-                <i data-lucide="cpu" class="w-3.5 h-3.5 animate-spin-slow text-ton-cyan"></i> Optimizado para MCP Singularity
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-ton-accent/30 bg-ton-accent/10 text-ton-accent text-xs font-mono mb-8 uppercase tracking-[0.15em] animate-float">
+                <i data-lucide="cpu" class="w-3.5 h-3.5 animate-spin-slow text-ton-cyan"></i> 
+                <span data-i18n="hero.badge">Optimizado para MCP Singularity</span>
             </div>
 
             <!-- Main Title with multi-color radial impact -->
@@ -241,7 +242,7 @@
             </h2>
 
             <p data-i18n="hero.desc" class="text-base sm:text-lg md:text-xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Diseñado exclusivamente para la predecibilidad estricta de Modelos de Lenguaje (LLMs). Cero magia en ejecución, interfaces unificadas y determinismo total para construir el taller de herramientas de tus agentes.
+                Diseñado exclusivamente para la predecibilidad estricta de Modelos de Lenguaje (LLMs). Cero magia en ejecución, interfaces unificadas y determinismo total para construir el catálogo de herramientas de tus agentes.
             </p>
 
             <!-- Hero CTAs -->
@@ -304,7 +305,7 @@
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-ton-cyan/20 bg-ton-cyan/5 text-ton-cyan text-xs font-mono uppercase tracking-wider">
                         <span class="w-2 h-2 rounded-full bg-ton-cyan animate-pulse"></span> Singularity MCP Workshop
                     </div>
-                    <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                    <h2 data-i18n="about.title" class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
                         La Unidad Motorizada de la <span class="bg-gradient-to-r from-ton-accent to-ton-cyan bg-clip-text text-transparent">Singularidad</span>
                     </h2>
                     <p data-i18n="about.p1" class="text-slate-300 text-lg leading-relaxed">
@@ -336,7 +337,7 @@
                     </div>
                 </div>
 
-                <!-- Right Interactive Architecture Flowchart (The Wow Visual Component) -->
+                <!-- Right Interactive Architecture Flowchart -->
                 <div class="lg:col-span-5 relative">
                     <!-- Tech Grid Card -->
                     <div class="glass-card rounded-2xl border border-ton-border p-6 overflow-hidden relative">
@@ -355,10 +356,10 @@
                                     </div>
                                     <div>
                                         <span class="font-bold text-white block">Singularity MCP</span>
-                                        <span class="text-[9px] text-slate-400">Model Context Client</span>
+                                        <span class="text-[9px] text-slate-400" data-i18n="diagram.node1.sub">Model Context Client</span>
                                     </div>
                                 </div>
-                                <span class="text-[10px] px-2 py-0.5 rounded bg-ton-accent/10 border border-ton-accent/30 text-ton-accent">DISPATCH</span>
+                                <span class="text-[10px] px-2 py-0.5 rounded bg-ton-accent/10 border border-ton-accent/30 text-ton-accent" data-i18n="diagram.node1.badge">DISPATCH</span>
                             </div>
 
                             <!-- Animated Pulsing Connector Line -->
@@ -376,10 +377,10 @@
                                     </div>
                                     <div>
                                         <span class="font-bold text-white block">Orchestrator</span>
-                                        <span class="text-[9px] text-slate-400">Structured Router</span>
+                                        <span class="text-[9px] text-slate-400" data-i18n="diagram.node2.sub">Structured Router</span>
                                     </div>
                                 </div>
-                                <span class="text-[10px] px-2 py-0.5 rounded bg-ton-cyan/10 border border-ton-cyan/30 text-ton-cyan">VALIDATE</span>
+                                <span class="text-[10px] px-2 py-0.5 rounded bg-ton-cyan/10 border border-ton-cyan/30 text-ton-cyan" data-i18n="diagram.node2.badge">VALIDATE</span>
                             </div>
 
                             <!-- Animated Pulsing Connector Line -->
@@ -397,10 +398,10 @@
                                     </div>
                                     <div>
                                         <span class="font-bold text-white block">Isolated Tool</span>
-                                        <span class="text-[9px] text-slate-400">Strict Go Executor</span>
+                                        <span class="text-[9px] text-slate-400" data-i18n="diagram.node3.sub">Strict Go Executor</span>
                                     </div>
                                 </div>
-                                <span class="text-[10px] px-2 py-0.5 rounded bg-ton-magenta/10 border border-ton-magenta/30 text-ton-magenta">EXECUTE</span>
+                                <span class="text-[10px] px-2 py-0.5 rounded bg-ton-magenta/10 border border-ton-magenta/30 text-ton-magenta" data-i18n="diagram.node3.badge">EXECUTE</span>
                             </div>
 
                             <!-- Animated Pulsing Connector Line -->
@@ -418,10 +419,10 @@
                                     </div>
                                     <div>
                                         <span class="font-bold text-white block">Domain / Safe Sandbox</span>
-                                        <span class="text-[9px] text-slate-400">Pure Entities</span>
+                                        <span class="text-[9px] text-slate-400" data-i18n="diagram.node4.sub">Pure Entities</span>
                                     </div>
                                 </div>
-                                <span class="text-[10px] px-2 py-0.5 rounded bg-ton-success/10 border border-ton-success/30 text-ton-success">MUTATE / OUT</span>
+                                <span class="text-[10px] px-2 py-0.5 rounded bg-ton-success/10 border border-ton-success/30 text-ton-success" data-i18n="diagram.node4.badge">MUTATE / OUT</span>
                             </div>
 
                         </div>
@@ -525,7 +526,7 @@
         </div>
     </section>
 
-    <!-- Interactive Code Explorer & Architecture Workspace (WOW Factor 2) -->
+    <!-- Interactive Code Explorer & Architecture Workspace -->
     <section id="explorer" class="py-24 bg-ton-dark relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 space-y-4">
@@ -570,7 +571,7 @@
                                             <i data-lucide="file-code" class="w-4 h-4 text-sky-400 shrink-0"></i>
                                             <span class="truncate">main.go</span>
                                         </div>
-                                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-sky-400/10 text-sky-400 shrink-0">Entry</span>
+                                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-sky-400/10 text-sky-400 shrink-0" data-i18n="explorer.badge.entry">Entry</span>
                                     </div>
                                 </div>
                             </div>
@@ -594,7 +595,7 @@
                                                 <i data-lucide="file-code" class="w-4 h-4 text-sky-400 shrink-0"></i>
                                                 <span class="truncate">tool.go</span>
                                             </div>
-                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-purple-400/10 text-purple-400 shrink-0">Contracts</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-purple-400/10 text-purple-400 shrink-0" data-i18n="explorer.badge.contracts">Contracts</span>
                                         </div>
                                     </div>
                                 </div>
@@ -611,14 +612,14 @@
                                                 <i data-lucide="file-code" class="w-4 h-4 text-ton-accent shrink-0"></i>
                                                 <span class="truncate">ping.go</span>
                                             </div>
-                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-ton-accent/20 text-ton-accent font-bold shrink-0">Tool</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-ton-accent/20 text-ton-accent font-bold shrink-0" data-i18n="explorer.badge.tool">Tool</span>
                                         </div>
                                         <div id="file-sandbox_go" class="tree-file py-1 px-2 sm:px-2.5 rounded-lg flex items-center justify-between hover:bg-white/5 cursor-pointer text-slate-400" onclick="selectFile('sandbox_go')">
                                             <div class="flex items-center gap-1.5 sm:gap-2 overflow-hidden">
                                                 <i data-lucide="file-code" class="w-4 h-4 text-ton-cyan shrink-0"></i>
                                                 <span class="truncate">sandbox.go</span>
                                             </div>
-                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-ton-cyan/10 text-ton-cyan shrink-0">Sandbox</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-ton-cyan/10 text-ton-cyan shrink-0" data-i18n="explorer.badge.sandbox">Sandbox</span>
                                         </div>
                                     </div>
                                 </div>
@@ -641,7 +642,7 @@
                                                 <i data-lucide="file-code" class="w-4 h-4 text-sky-400 shrink-0"></i>
                                                 <span class="truncate">errors.go</span>
                                             </div>
-                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-red-400/10 text-red-400 shrink-0">Error</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-red-400/10 text-red-400 shrink-0" data-i18n="explorer.badge.error">Error</span>
                                         </div>
                                     </div>
                                 </div>
@@ -683,7 +684,7 @@
         </div>
     </section>
 
-    <!-- LIVE API PLAYGROUND / SIMULATED SERVER TERMINAL (WOW Factor 3) -->
+    <!-- LIVE API PLAYGROUND / SIMULATED SERVER TERMINAL -->
     <section id="api" class="py-24 grid-pattern relative border-y border-ton-border">
         <!-- Mask for grid -->
         <div class="absolute inset-0 bg-ton-black/95 z-0 pointer-events-none"></div>
@@ -719,7 +720,7 @@
                             <!-- Input JSON Configuration Form Dynamic -->
                             <div class="space-y-4 font-mono text-xs w-full max-w-full">
                                 <div class="space-y-2">
-                                    <span class="block text-slate-500 uppercase font-bold">HTTP PAYLOAD (JSON)</span>
+                                    <span class="block text-slate-500 uppercase font-bold" data-i18n="api.payload_label">HTTP PAYLOAD (JSON)</span>
                                     <div class="p-4 bg-ton-black rounded-xl border border-ton-border text-slate-300 overflow-x-auto max-w-full w-full">
                                         <pre class="max-w-full"><code id="playground-payload-json" class="max-w-full"></code></pre>
                                     </div>
@@ -750,14 +751,14 @@
 
                         <!-- Console outputs -->
                         <div class="p-4 sm:p-6 font-mono text-xs text-slate-400 space-y-4 flex-1 overflow-y-auto max-h-[450px]" id="terminal-screen">
-                            <div class="text-slate-500">// Servidor TON encendido. Esperando conexiones en el puerto 8080...</div>
-                            <div class="text-slate-500">// Singularity MCP escuchando por puente local.</div>
+                            <div class="text-slate-500" data-i18n="terminal.log1">// Servidor TON encendido. Esperando conexiones en el puerto 8080...</div>
+                            <div class="text-slate-500" data-i18n="terminal.log2">// Singularity MCP escuchando por puente local.</div>
                         </div>
 
                         <!-- Status Badge -->
                         <div class="bg-ton-black px-4 sm:px-6 py-3 border-t border-ton-border flex items-center justify-between font-mono text-[10px]">
                             <div class="flex items-center gap-1.5 text-slate-500">
-                                <span>Status:</span>
+                                <span data-i18n="terminal.status_label">Status:</span>
                                 <span class="text-ton-success font-bold" id="terminal-status">READY</span>
                             </div>
                             <button onclick="clearTerminalScreen()" class="text-slate-500 hover:text-white transition duration-200 flex items-center gap-1">
@@ -822,10 +823,10 @@
                     <div class="hidden px-6 pb-6 pt-2 border-t border-ton-border bg-ton-black/40 text-sm text-slate-400 space-y-4" id="body-spec1">
                         <p data-i18n="specs.item1.p1">Para expandir las capacidades legibles de tu agente MCP, sigue estas convenciones de codificación estricta:</p>
                         <div class="bg-ton-black p-4 rounded-xl border border-ton-border text-xs overflow-x-auto space-y-2">
-                            <div class="text-slate-500">// 1. Define Request/Response en domain/</div>
+                            <div class="text-slate-500" data-i18n="specs.item1.comment1">// 1. Define Request/Response en domain/</div>
                             <div><span class="syn-keyword">type</span> MyRequest <span class="syn-keyword">struct</span> { Input <span class="syn-type">string</span> }</div>
                             <div><span class="syn-keyword">type</span> MyResponse <span class="syn-keyword">struct</span> { Output <span class="syn-type">string</span> }</div>
-                            <div class="text-slate-500">// 2. Crea un Executor de firma única en domain/</div>
+                            <div class="text-slate-500" data-i18n="specs.item1.comment2">// 2. Crea un Executor de firma única en domain/</div>
                             <div><span class="syn-keyword">type</span> MyExecutor <span class="syn-keyword">interface</span> { Execute(ctx context.Context, req MyRequest) (*MyResponse, <span class="syn-type">error</span>) }</div>
                         </div>
                     </div>
@@ -861,22 +862,22 @@
                     </button>
                     <div class="hidden px-6 pb-6 pt-2 border-t border-ton-border bg-ton-black/40 text-sm text-slate-400 space-y-4" id="body-spec3">
                         <p data-i18n="specs.item3.p1">Los errores tipados de TON aseguran que el LLM sea capaz de capturar errores de contexto y auto-corregir sus argumentos en tiempo real:</p>
-                        <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                             <div class="bg-ton-black p-3 rounded-lg border border-ton-border">
                                 <span class="text-ton-error font-bold">ErrCodeValidation</span>
-                                <span class="block text-slate-500 text-[10px] mt-1">Gatillado por argumentos no válidos en Payload.</span>
+                                <span class="block text-slate-500 text-[10px] mt-1" data-i18n="specs.item3.box1">Gatillado por argumentos no válidos en Payload.</span>
                             </div>
                             <div class="bg-ton-black p-3 rounded-lg border border-ton-border">
                                 <span class="text-ton-error font-bold">ErrCodeNotFound</span>
-                                <span class="block text-slate-500 text-[10px] mt-1">Recursos inexistentes o no registrados.</span>
+                                <span class="block text-slate-500 text-[10px] mt-1" data-i18n="specs.item3.box2">Recursos inexistentes o no registrados.</span>
                             </div>
                             <div class="bg-ton-black p-3 rounded-lg border border-ton-border">
                                 <span class="text-ton-error font-bold">ErrCodeExecution</span>
-                                <span class="block text-slate-500 text-[10px] mt-1">Fallo de ejecución o desbordamiento de Sandbox.</span>
+                                <span class="block text-slate-500 text-[10px] mt-1" data-i18n="specs.item3.box3">Fallo de ejecución o desbordamiento de Sandbox.</span>
                             </div>
                             <div class="bg-ton-black p-3 rounded-lg border border-ton-border">
                                 <span class="text-ton-error font-bold">ErrCodeInternal</span>
-                                <span class="block text-slate-500 text-[10px] mt-1">Interrupción de procesos críticos o memoria del framework.</span>
+                                <span class="block text-slate-500 text-[10px] mt-1" data-i18n="specs.item3.box4">Interrupción de procesos críticos o memoria del framework.</span>
                             </div>
                         </div>
                     </div>
@@ -1032,75 +1033,114 @@
         // Interactive Translations Map (Bilingual support)
         const translations = {
             es: {
+                "nav.logo_sub": "Orchestration Node",
                 "nav.about": "Contexto",
                 "nav.principles": "Principios",
                 "nav.explorer": "Workspace",
                 "nav.api": "Terminal Live",
                 "nav.specs": "Manual",
-                "hero.badge": '<i data-lucide="cpu" class="w-3.5 h-3.5 animate-spin-slow text-ton-cyan"></i> Optimizado para MCP Singularity',
-                "hero.subtitle": "El Primer Engine <span class='text-transparent bg-clip-text bg-gradient-to-r from-ton-accent to-ton-cyan font-bold text-glow-purple'>AI-First</span> para Orquestación en Go.",
-                "hero.desc": "Diseñado exclusivamente para la predecibilidad estricta de Modelos de Lenguaje (LLMs). Cero magia en ejecución, interfaces unificadas y determinismo total para construir el taller de herramientas de tus agentes.",
-                "hero.btn.start": "Instalar Instante",
+                "hero.badge": "Optimizado para MCP Singularity",
+                "hero.subtitle": "El primer motor <span class='text-transparent bg-clip-text bg-gradient-to-r from-ton-accent to-ton-cyan font-bold text-glow-purple'>AI-First</span> para orquestación en Go.",
+                "hero.desc": "Diseñado exclusivamente para la predecibilidad extrema de Modelos de Lenguaje (LLMs). Cero magia en runtime, interfaces unificadas y determinismo total para construir el ecosistema de herramientas de tus agentes.",
+                "hero.btn.start": "Instalar Ahora",
                 "hero.btn.docs": "Ver Workspace",
                 "metric.r1": "Cero reflexiones dinámicas en tiempo de ejecución.",
                 "metric.r2": "Aislamiento nativo de Sandbox en Linux.",
                 "metric.r3": "Acoplado para Model Context Protocol.",
-                "metric.r4": "Cargas reducidas optimizadas para LLM tokens.",
-                "about.p1": "En la era de los agentes autónomos de IA, la infraestructura web clásica está desfasada. Las APIs tradicionales inyectan magia dinámica en ejecución, confundiendo la inferencia de los LLMs.",
-                "about.p2": "<strong>TON (Tool Orchestration Node)</strong> es el entorno de ejecución determinista definitivo para el servidor de contexto <strong>Singularity</strong>. Excluye de forma total las complejidades interpretativas. Cada contrato, respuesta, error de validación e incluso comandos dentro de su Sandbox aislado se definen mediante tipado estricto.",
+                "metric.r4": "Cargas reducidas optimizadas para tokens del LLM.",
+                "about.title": "El motor de rendimiento para <span class=\"bg-gradient-to-r from-ton-accent to-ton-cyan bg-clip-text text-transparent\">Singularity</span>",
+                "about.p1": "En la era de los agentes autónomos de IA, la infraestructura web clásica está obsoleta. Las APIs tradicionales inyectan opacidad dinámica en runtime, fragmentando la inferencia de los LLMs.",
+                "about.p2": "<strong>TON (Tool Orchestration Node)</strong> es el entorno de ejecución determinista definitivo para el servidor de contexto <strong>Singularity</strong>. Elimina por completo las complejidades interpretativas de la IA. Cada contrato, respuesta, excepción de validación e incluso los comandos dentro de su Sandbox aislado se definen bajo un tipado estricto.",
                 "about.feat1.title": "Esquemas Estáticos",
-                "about.feat1.desc": "Validaciones de entrada estructuradas y robustas legibles por el LLM.",
+                "about.feat1.desc": "Validaciones de entrada altamente estructuradas legibles directamente por el LLM.",
                 "about.feat2.title": "Aislamiento Sandbox",
-                "about.feat2.desc": "Control estricto con namespaces para evitar exfiltraciones de datos.",
-                "diagram.title": "Flujo Cuántico de Ejecución",
+                "about.feat2.desc": "Control de entornos con namespaces restringidos para evitar fugas de información.",
+                
+                // Flowchart Diagram
+                "diagram.title": "Flujo de Ejecución Determinista",
+                "diagram.node1.sub": "Model Context Client",
+                "diagram.node1.badge": "DISPATCH",
+                "diagram.node2.sub": "Structured Router",
+                "diagram.node2.badge": "VALIDATE",
+                "diagram.node3.sub": "Strict Go Executor",
+                "diagram.node3.badge": "EXECUTE",
+                "diagram.node4.sub": "Pure Entities",
+                "diagram.node4.badge": "MUTATE / OUT",
+
+                // Principles Grid
                 "principles.subtitle": "Paradigma AI-First",
                 "principles.title": "Reglas Estructuradas de Diseño Core",
                 "principles.r1.title": '<span class="text-ton-accent font-mono text-base mr-1">01.</span> Cero Magia',
-                "principles.r1.desc": 'Prohibido el uso de reflexión intensiva (<code class="text-ton-cyan bg-white/5 font-mono px-1.5 py-0.5 rounded border border-white/5">reflect</code>) en tiempo de ejecución. Todo es estático, explícito y comprobable en tiempo de compilación.',
+                "principles.r1.desc": 'Prohibido el uso de reflexión en tiempo de ejecución (<code class="text-ton-cyan bg-white/5 font-mono px-1.5 py-0.5 rounded border border-white/5">reflect</code>). Todo es estático, explícito y asegurable durante la compilación.',
                 "principles.r2.title": '<span class="text-ton-cyan font-mono text-base mr-1">02.</span> Segregación Extrema',
-                "principles.r2.desc": 'Interfaces estrictamente reducidas a un solo método explícito (ej. <code class="text-ton-cyan bg-white/5 font-mono px-1.5 py-0.5 rounded border border-white/5">PingExecutor</code>). Prohibidas las interfaces monolíticas o ambiguas.',
+                "principles.r2.desc": 'Interfaces reducidas estrictamente a un solo método (ej. <code class="text-ton-cyan bg-white/5 font-mono px-1.5 py-0.5 rounded border border-white/5">PingExecutor</code>). Se prohíben las abstracciones monolíticas.',
                 "principles.r3.title": '<span class="text-ton-magenta font-mono text-base mr-1">03.</span> I/O Estructurado',
-                "principles.r3.desc": 'Comunicación estricta entre capas mediante structs deterministas de Request/Response. Eliminación de mapas dinámicos o interfaces vacías no explícitas.',
+                "principles.r3.desc": 'Comunicación determinista entre capas mediante structs rígidos de Request/Response. Sin mapas dinámicos ni interfaces vacías.',
                 "principles.r4.title": '<span class="text-ton-error font-mono text-base mr-1">04.</span> Errores Deterministas',
-                "principles.r4.desc": 'Tipado exacto utilizando estructuras de error unificadas (ej. <code class="text-ton-cyan bg-white/5 font-mono px-1.5 py-0.5 rounded border border-white/5">TONError</code>). Cada error devuelto provee un contexto semántico óptimo para la IA.',
+                "principles.r4.desc": 'Tipado exacto utilizando estructuras de excepción unificadas (ej. <code class="text-ton-cyan bg-white/5 font-mono px-1.5 py-0.5 rounded border border-white/5">TONError</code>). Cada código provee contexto semántico limpio al LLM.',
                 "principles.r5.title": '<span class="text-ton-success font-mono text-base mr-1">05.</span> Orientación Nativa a "Tools"',
-                "principles.r5.desc": 'Cada segmento de lógica de negocio o funcionalidad se empaqueta como una "Tool" autodescriptiva para el servidor MCP. Esto optimiza el procesamiento de tokens y la toma de decisiones del LLM al ejecutar acciones en tiempo real.',
-                "workspace.tag": "Explorador de Arquitectura",
+                "principles.r5.desc": 'Cada segmento de lógica se expone como una "Tool" autodescriptiva para el servidor MCP. Esto reduce el consumo de ventana de contexto del LLM y optimiza la toma de decisiones en tiempo real.',
+                
+                // Explorer Workspaces
+                "workspace.tag": "Workspace del Framework",
                 "workspace.title": "Estructura & Código Interactivo",
                 "explorer.title": "TOPOLOGÍA INMUTABLE",
-                "explorer.desc": "Navega por la estructura de carpetas oficial y haz clic en los archivos para visualizar sus implementaciones AI-First.",
+                "explorer.desc": "Explora la topología del proyecto y haz clic en los archivos para visualizar sus implementaciones Go.",
+                "explorer.badge.entry": "Entrada",
+                "explorer.badge.contracts": "Contratos",
+                "explorer.badge.tool": "Tool",
+                "explorer.badge.sandbox": "Sandbox",
+                "explorer.badge.error": "Error",
+
+                // API Playground
                 "api.tag": "Entorno de Pruebas",
                 "api.title": "API Playground & Terminal de Orquestación",
-                "api.desc": "Selecciona una herramienta, introduce parámetros y simula una llamada REST interactiva en el servidor de TON para ver la respuesta del framework.",
+                "api.desc": "Selecciona una herramienta, define parámetros y simula una llamada REST interactiva al orquestador de TON.",
                 "api.config.title": "Configurar Parámetros",
-                "api.config.desc": "Configura los argumentos que el LLM enviará para ejecutar la Tool.",
+                "api.config.desc": "Configura los argumentos que Singularity MCP mapeará al despachar la herramienta.",
                 "api.label.tool": "HERRAMIENTA (TOOL)",
-                "api.btn.send": "Enviar POST /tools",
-                "terminal.title": "CONSOLE DE SIMULACIÓN EN VIVO",
-                "terminal.clear": "Limpiar Pantalla",
-                "init.title": 'Levanta el <span class="text-transparent bg-clip-text bg-gradient-to-r from-ton-accent to-ton-cyan text-glow-purple font-mono">Taller</span> en un Instante',
-                "init.desc": "Ejecuta el script unificado de instalación para descargar, compilar dependencias e inicializar el router de TON.",
+                "api.payload_label": "PAYLOAD DE LA PETICIÓN (JSON)",
+                "api.btn.send": "Despachar POST /tools",
+                "terminal.title": "LOGS DE SIMULACIÓN EN VIVO",
+                "terminal.status_label": "Estado:",
+                "terminal.clear": "Limpiar Consola",
+                "terminal.log1": "// Servidor TON activo. Esperando conexiones en el puerto 8080...",
+                "terminal.log2": "// Singularity MCP escuchando peticiones vía bridge local.",
+
+                // Installer Setup
+                "init.title": 'Despliega tu <span class="text-transparent bg-clip-text bg-gradient-to-r from-ton-accent to-ton-cyan text-glow-purple font-mono">Workspace</span> en un Instante',
+                "init.desc": "Ejecuta el script de instalación automática para clonar, resolver dependencias e inicializar el orquestador local de TON.",
                 "init.toast": "¡Comando copiado al portapapeles!",
+                
+                // Specifications Accordion
                 "specs.tag": "Manual de Referencia",
                 "specs.title": "Especificaciones de Arquitectura",
-                "specs.item1.title": "Cómo Agregar una Nueva Tool",
-                "specs.item1.p1": "Para expandir las capacidades legibles de tu agente MCP, sigue estas convenciones de codificación estricta:",
-                "specs.item2.title": "Aislamiento Sandbox (CLONE_NEWNET)",
-                "specs.item2.p1": "La herramienta <code class='text-ton-cyan'>execute_in_sandbox</code> ejecuta comandos dentro de namespaces Linux aislados.",
-                "specs.item2.li1": "<strong>Seguridad:</strong> Bloquea peticiones HTTP salientes con <code class='text-ton-accent'>CLONE_NEWNET</code> para prevenir filtraciones de API keys.",
-                "specs.item2.li2": "<strong>Restricción:</strong> Solo permite variables de entorno configuradas por el array <code class='text-ton-accent'>AllowedEnvs</code>.",
-                "specs.item2.li3": "<strong>Control:</strong> Limita el abuso de CPU por sub-agentes utilizando timeouts explícitos de ejecución.",
-                "specs.item3.title": "Estructura Global de Errores Tipados",
-                "specs.item3.p1": "Los errores tipados de TON aseguran que el LLM sea capaz de capturar errores de contexto y auto-corregir sus argumentos en tiempo real:",
-                "footer.text": "Construido para soportar la Singularidad. Diseñado para un futuro autónomo."
+                "specs.item1.title": "Cómo Registrar una Nueva Tool",
+                "specs.item1.p1": "Para extender las capacidades expuestas a tu cliente MCP, sigue estas convenciones de arquitectura estricta:",
+                "specs.item1.comment1": "// 1. Define Request/Response dentro de domain/",
+                "specs.item1.comment2": "// 2. Crea un Executor de firma única dentro de domain/",
+                "specs.item2.title": "Seguridad en Sandbox (CLONE_NEWNET)",
+                "specs.item2.p1": "La utilidad nativa <code class='text-ton-cyan'>execute_in_sandbox</code> contiene la ejecución del sistema usando aislamiento de namespaces de Linux.",
+                "specs.item2.li1": "<strong>Red Privada:</strong> Desactiva el tráfico de red externo vía <code class='text-ton-accent'>CLONE_NEWNET</code> para proteger las llaves de API.",
+                "specs.item2.li2": "<strong>Variables de Entorno:</strong> Restringe el acceso a variables del sistema mediante un whitelist en <code class='text-ton-accent'>AllowedEnvs</code>.",
+                "specs.item2.li3": "<strong>Timeout:</strong> Controla el consumo excesivo de CPU configurando límites de tiempo estrictos.",
+                "specs.item3.title": "Esquema Unificado de Excepciones",
+                "specs.item3.p1": "Los errores tipados de TON garantizan que el LLM sea capaz de decodificar fallos nativamente para autocorregirse en tiempo real:",
+                "specs.item3.box1": "Disparado por parámetros de entrada inválidos en el Payload.",
+                "specs.item3.box2": "Recursos inexistentes o no registrados en el orquestador.",
+                "specs.item3.box3": "Fallo de ejecución o desbordamiento de memoria del Sandbox.",
+                "specs.item3.box4": "Interrupción de procesos críticos o fallos en el core del framework.",
+
+                "footer.text": "Construido para potenciar Singularity. Diseñado para un futuro autónomo."
             },
             en: {
+                "nav.logo_sub": "Orchestration Node",
                 "nav.about": "Context",
                 "nav.principles": "Principles",
                 "nav.explorer": "Workspace",
                 "nav.api": "Live Terminal",
                 "nav.specs": "Specs",
-                "hero.badge": '<i data-lucide="cpu" class="w-3.5 h-3.5 animate-spin-slow text-ton-cyan"></i> Optimized for MCP Singularity',
+                "hero.badge": "Optimized for MCP Singularity",
                 "hero.subtitle": "The First <span class='text-transparent bg-clip-text bg-gradient-to-r from-ton-accent to-ton-cyan font-bold text-glow-purple'>AI-First</span> Orchestration Engine in Go.",
                 "hero.desc": "Designed exclusively for extreme predictability of Large Language Models (LLMs). Zero magical reflection, single unified interfaces and total determinism to forge the ultimate execution sandbox for your agents.",
                 "hero.btn.start": "Install Instantly",
@@ -1109,13 +1149,26 @@
                 "metric.r2": "Native container isolated sandbox using Linux namespaces.",
                 "metric.r3": "Direct compliance ready for Model Context Protocol.",
                 "metric.r4": "Slashed payloads optimized strictly for context window savings.",
-                "about.p1": "In the modern era of autonomous AI agents, legacy web infrastructure is outdated. Classic HTTP frameworks inject runtime magical magic, confusing LLM execution pathways.",
+                "about.title": "The Power Engine of <span class=\"bg-gradient-to-r from-ton-accent to-ton-cyan bg-clip-text text-transparent\">Singularity</span>",
+                "about.p1": "In the modern era of autonomous AI agents, legacy web infrastructure is outdated. Classic HTTP frameworks inject runtime magical magic, confusing LLM pathways.",
                 "about.p2": "<strong>TON (Tool Orchestration Node)</strong> is the definitive execution environment for the <strong>Singularity context server</strong>. It excludes execution vagueness. Every validation contract, structured response or sub-agent execution container utilizes explicit typed structures.",
                 "about.feat1.title": "Static Schemas",
                 "about.feat1.desc": "Structured strict input/output structures tailored for model clarity.",
                 "about.feat2.title": "Sandbox Jailing",
                 "about.feat2.desc": "Enforced network context security with isolated clone namespaces.",
+                
+                // Flowchart Diagram
                 "diagram.title": "Quantum Flow Dispatch",
+                "diagram.node1.sub": "Model Context Client",
+                "diagram.node1.badge": "DISPATCH",
+                "diagram.node2.sub": "Structured Router",
+                "diagram.node2.badge": "VALIDATE",
+                "diagram.node3.sub": "Strict Go Executor",
+                "diagram.node3.badge": "EXECUTE",
+                "diagram.node4.sub": "Pure Entities",
+                "diagram.node4.badge": "MUTATE / OUT",
+
+                // Principles Grid
                 "principles.subtitle": "AI-First Paradigm",
                 "principles.title": "Enforced Architectural Principles",
                 "principles.r1.title": '<span class="text-ton-accent font-mono text-base mr-1">01.</span> Zero Magic',
@@ -1128,26 +1181,45 @@
                 "principles.r4.desc": 'Structured errors leveraging a unified <code class="text-ton-cyan bg-white/5 font-mono px-1.5 py-0.5 rounded border border-white/5">TONError</code> payload to ensure LLMs decode runtime faults natively.',
                 "principles.r5.title": '<span class="text-ton-success font-mono text-base mr-1">05.</span> Tool Focused APIs',
                 "principles.r5.desc": 'Every logic component wraps natively into self-descriptive tools compatible with Singularity MCP. Saving context window costs and improving agent accuracy.',
+                
+                // Explorer Workspaces
                 "workspace.tag": "Architecture Space",
                 "workspace.title": "Interactive Code & Structure Map",
                 "explorer.title": "IMMUTABLE TOPOLOGY",
                 "explorer.desc": "Navigate through the official framework directories and click files to reveal Go structures inside our interactive IDE.",
+                "explorer.badge.entry": "Entry",
+                "explorer.badge.contracts": "Contracts",
+                "explorer.badge.tool": "Tool",
+                "explorer.badge.sandbox": "Sandbox",
+                "explorer.badge.error": "Error",
+
+                // API Playground
                 "api.tag": "Playground Engine",
                 "api.title": "Interactive Server API & Terminal Sandbox",
                 "api.desc": "Choose an execution tool, configure parameters, and dispatch interactive REST requests to view how TON resolves structures.",
                 "api.config.title": "Configure Parameters",
                 "api.config.desc": "Tweak the payload JSON parameters that Singularity MCP maps to TON tools.",
                 "api.label.tool": "EXECUTABLE TOOL",
+                "api.payload_label": "HTTP PAYLOAD (JSON)",
                 "api.btn.send": "Dispatch POST /tools",
                 "terminal.title": "LIVE SIMULATION LOGS",
+                "terminal.status_label": "Status:",
                 "terminal.clear": "Clear Terminal",
-                "init.title": 'Deploy the <span class="text-transparent bg-clip-text bg-gradient-to-r from-ton-accent to-ton-cyan text-glow-purple font-mono">Workshop</span> Instantly',
+                "terminal.log1": "// TON Server active. Listening on port 8080...",
+                "terminal.log2": "// Singularity MCP listening via local bridge.",
+
+                // Installer Setup
+                "init.title": 'Deploy the <span class="text-transparent bg-clip-text bg-gradient-to-r from-ton-accent to-ton-cyan text-glow-purple font-mono">Workspace</span> Instantly',
                 "init.desc": "Execute our custom unifed script to fetch, build dependencies, and initialize the TON orchestrator local router.",
                 "init.toast": "Command successfully copied!",
+                
+                // Specifications Accordion
                 "specs.tag": "Reference Manual",
                 "specs.title": "Technical Deep Dive",
                 "specs.item1.title": "How to register a new Tool",
                 "specs.item1.p1": "To expand tool availability for Singularity MCP clients, follow these strict coding conventions:",
+                "specs.item1.comment1": "// 1. Define Request/Response inside domain/",
+                "specs.item1.comment2": "// 2. Create single-method Executor inside domain/",
                 "specs.item2.title": "Sandbox Containment Security (CLONE_NEWNET)",
                 "specs.item2.p1": "The built-in <code class='text-ton-cyan'>execute_in_sandbox</code> utility shields system execution using Linux namespace isolation.",
                 "specs.item2.li1": "<strong>Security:</strong> Disables outgoing networks via <code class='text-ton-accent'>CLONE_NEWNET</code> to secure API boundaries.",
@@ -1155,6 +1227,11 @@
                 "specs.item2.li3": "<strong>Enforcement:</strong> Controls resource consumption limits with configurable timeouts.",
                 "specs.item3.title": "Unified Deterministic Errors",
                 "specs.item3.p1": "TON typed exceptions ensure LLMs decode errors seamlessly to self-correct dynamic payloads dynamically:",
+                "specs.item3.box1": "Triggered by invalid input arguments in Payload.",
+                "specs.item3.box2": "Non-existent or unregistered resources.",
+                "specs.item3.box3": "Execution failure or Sandbox stack overflow.",
+                "specs.item3.box4": "Disruption of critical processes or framework memory.",
+
                 "footer.text": "Engineered for the upcoming Singularity. Crafted for autonomous computing."
             }
         };
@@ -1168,6 +1245,20 @@
                     el.innerHTML = translations[currentLang][key];
                 }
             });
+
+            // Dynamically translate select option nodes safely without wiping selectors
+            const toolSelect = document.getElementById('playground-tool-select');
+            if (toolSelect) {
+                toolSelect.options[0].text = currentLang === 'es' ? 'ping' : 'ping';
+                toolSelect.options[1].text = currentLang === 'es' ? 'ping (Gatillar Validación Error)' : 'ping (Trigger Validation Error)';
+                toolSelect.options[2].text = currentLang === 'es' ? 'execute_in_sandbox' : 'execute_in_sandbox';
+            }
+
+            // Translate Status indicator state text if it's currently on default READY
+            const statusEl = document.getElementById('terminal-status');
+            if (statusEl && (statusEl.innerText === "READY" || statusEl.innerText === "LISTO")) {
+                statusEl.innerText = currentLang === 'es' ? 'LISTO' : 'READY';
+            }
             
             // Reinitialize icons in case DOM replaced strings
             lucide.createIcons();
@@ -1260,9 +1351,11 @@
             document.getElementById('playground-payload-json').innerText = JSON.stringify(payload, null, 4);
         }
 
+        // Clear simulation screen
         function clearTerminalScreen() {
             const screen = document.getElementById('terminal-screen');
-            screen.innerHTML = `<div class="text-slate-500">// Terminal logs cleared. Ready for execution.</div>`;
+            const logClean = currentLang === 'es' ? '// Terminal limpia. Lista para simulación.' : '// Terminal logs cleared. Ready for execution.';
+            screen.innerHTML = `<div class="text-slate-500">${logClean}</div>`;
         }
 
         function triggerPlaygroundCall() {
@@ -1272,7 +1365,7 @@
             const screen = document.getElementById('terminal-screen');
             const statusEl = document.getElementById('terminal-status');
 
-            statusEl.innerText = "EXECUTING...";
+            statusEl.innerText = currentLang === 'es' ? "EJECUTANDO..." : "EXECUTING...";
             statusEl.className = "text-ton-warning font-bold";
 
             const logId = Math.floor(Math.random() * 1000);
@@ -1293,7 +1386,11 @@
                 let consoleLogs = [];
 
                 if (toolKey === 'ping') {
-                    consoleLogs = [
+                    consoleLogs = currentLang === 'es' ? [
+                        `[INFO] [${new Date().toISOString()}] Petición TCP entrante verificada. Validando esquemas de structs...`,
+                        `[INFO] [PingTool] Ejecutando petición Ping core. ID de Agente: "agent_b9_01" mensaje OK.`,
+                        `[INFO] Empaquetando respuestas en esquema de respuesta JSON. Duración: 180µs.`
+                    ] : [
                         `[INFO] [${new Date().toISOString()}] Incoming TCP request verified. Validating struct schemas...`,
                         `[INFO] [PingTool] Executing core Ping request. Agent ID: "agent_b9_01" message OK.`,
                         `[INFO] Packaging outputs into JSON response schema. Duration: 180µs.`
@@ -1308,7 +1405,11 @@
                     statusEl.innerText = "HTTP 200 OK";
                     statusEl.className = "text-ton-success font-bold";
                 } else if (toolKey === 'ping_error') {
-                    consoleLogs = [
+                    consoleLogs = currentLang === 'es' ? [
+                        `[INFO] [${new Date().toISOString()}] Flujo de verificación inicializado. Mapeando payloads...`,
+                        `[WARN] [PingTool] Fallo en la validación del esquema. Contexto: "agent_id" es obligatorio pero está vacío.`,
+                        `[ERROR] Codificando bloque de error determinista TONException.`
+                    ] : [
                         `[INFO] [${new Date().toISOString()}] Verification stream initialized. Mapping payloads...`,
                         `[WARN] [PingTool] Schema validation failed. Context: "agent_id" is required but empty.`,
                         `[ERROR] Encoding deterministic TONException error block.`
@@ -1317,17 +1418,22 @@
                         result: null,
                         error: {
                             code: "VALIDATION",
-                            message: "agent_id es requerido para el ping"
+                            message: currentLang === 'es' ? "agent_id es requerido para el ping" : "agent_id is required for ping"
                         }
                     };
                     statusEl.innerText = "HTTP 400 BAD REQUEST";
                     statusEl.className = "text-ton-error font-bold";
                 } else if (toolKey === 'execute_sandbox') {
-                    consoleLogs = [
+                    consoleLogs = currentLang === 'es' ? [
+                        `[INFO] Ejecutando comando de contención del sistema dentro de namespaces de Linux.`,
+                        `[SANDBOX] Clonando espacio de nombres de red activo (CLONE_NEWNET). Red DESACTIVADA.`,
+                        `[SANDBOX] Inicializando ejecución del proceso de comando: "go test ./..."`,
+                        `[SANDBOX] Ejecución del contenedor finalizada. Duración: 1.1s. Código de salida: 0.`
+                    ] : [
                         `[INFO] Executing system containment command inside Linux namespaces.`,
                         `[SANDBOX] Cloning active net namespace (CLONE_NEWNET). Network traffic DISABLED.`,
                         `[SANDBOX] Initializing command process execution: "go test ./..."`,
-                        `[SANDBOX] Container execution finished. Duration: 1.1s. Code: 0.`
+                        `[SANDBOX] Container execution finished. Duration: 1.1s. Exit code: 0.`
                     ];
                     response = {
                         result: {
@@ -1351,7 +1457,7 @@
                 // Render structured output
                 screen.innerHTML += `
                     <div class="bg-black/40 border border-ton-border/80 p-3 rounded-xl mt-2 text-ton-success font-mono font-bold">
-                        <span class="block text-[10px] text-slate-500">HTTP Response:</span>
+                        <span class="block text-[10px] text-slate-500">${currentLang === 'es' ? 'Respuesta HTTP:' : 'HTTP Response:'}</span>
                         <pre>${JSON.stringify(response, null, 4)}</pre>
                     </div>
                 `;
