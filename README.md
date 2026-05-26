@@ -40,12 +40,17 @@ TON (Tool Orchestration Node) es un framework AI-First en Go diseñado como moto
 
 /internal/domain      → Entidades core e interfaces de dominio.
                       └── tool.go        → PingRequest, PingResponse, PingExecutor interface.
+                      └── sandbox.go     → SandboxRequest, SandboxResponse, SandboxExecutor.
                       └── *.go           → Agregar aquí entities e interfaces pequeñas.
 
 /internal/tools        → Implementación de herramientas (Tools).
                       └── tool.go        → Interface Tool (Name, Description, Execute).
                       └── ping.go        → Ejemplo: PingTool + PingExecutor.
+                      └── sandbox.go     → SandboxTool para ejecución aislada.
                       └── *.go           → Agregar nuevas tools aquí.
+
+/internal/sandbox      → Implementación de ejecutores aislados.
+                      └── linux_executor.go → Executor nativo con CLONE_NEWNET.
 
 /internal/orchestrator → Routing y handlers HTTP que conectan Singularity con Tools.
                       └── orchestrator.go → ToolRegistry + Orchestrator.
@@ -140,6 +145,45 @@ errors.NewInternal(err)
 errors.NewExecution("tool failed")
 errors.Wrap(originalErr, errors.ErrCodeValidation, "context")
 ```
+
+---
+
+## Sandbox Tool
+
+La tool `execute_in_sandbox` permite ejecutar comandos (builds, tests) en un entorno aislado con network namespace (`CLONE_NEWNET`) para prevenir exfiltración de datos.
+
+**Nombre:** `execute_in_sandbox`
+
+**Request:**
+```json
+{
+    "tool": "execute_in_sandbox",
+    "params": {
+        "ProjectPath": "/path/to/project",
+        "Command": "go build ./...",
+        "TimeoutSecs": 120,
+        "AllowedEnvs": ["PATH", "HOME"]
+    }
+}
+```
+
+**Response:**
+```json
+{
+    "result": {
+        "ExitCode": 0,
+        "Stdout": "...",
+        "Stderr": "",
+        "Duration": "2.5s"
+    },
+    "error": null
+}
+```
+
+** Aislamiento:**
+- `CLONE_NEWNET`: Red aislada (solo localhost disponible)
+- `context.WithTimeout`: Timeout configurable
+- Permiso de variables de entorno controlable via `AllowedEnvs`
 
 ---
 
