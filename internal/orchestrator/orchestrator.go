@@ -51,6 +51,7 @@ func NewOrchestrator() *Orchestrator {
 
 func (o *Orchestrator) registerDefaultTools() {
 	o.registry.Register(tools.NewPingTool())
+	o.registry.Register(tools.NewSandboxTool())
 }
 
 func (o *Orchestrator) ServeHTTP(w http.ResponseWriter, r *http.Request) {
