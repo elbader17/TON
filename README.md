@@ -5,7 +5,7 @@
 Clona el repositorio y ejecuta el script de instalación:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/elbader17/TON/main/install.sh | bash
+git clone https://github.com/elbader17/TON && cd TON && ./install.sh
 ```
 
 Esto descargará el proyecto, instalará las dependencias con `go mod tidy` y te indicará cómo levantar el servidor.
